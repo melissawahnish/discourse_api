@@ -66,4 +66,16 @@ describe DiscourseApi::API::Categories do
       expect(topics).to be_an Array
     end
   end
+
+  describe "#update_category" do
+    before do
+      stub_put("http://localhost:3000/c/1.json?api_key=test_d7fd0429940&api_username=test_user").to_return(body: fixture("categories.json"), headers: { content_type: "application/json" })
+      stub_put("http://localhost:3000/g/1.json?api_key=test_d7fd0429940&api_username=test_user").to_return(body: fixture("groups.json"), headers: { content_type: "application/json" })
+    end
+
+    it "sets permission to a group" do
+      subject.set_permission(1, 101, 1)
+      expect(a_put("http://localhost:3000/c/1.json?api_key=test_d7fd0429940&api_username=test_user")).to have_been_made
+    end
+  end
 end

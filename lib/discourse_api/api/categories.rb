@@ -35,6 +35,14 @@ module DiscourseApi
         response = get("/c/#{id}/show")
         response.body['category']
       end
+
+      def set_permission(category_id, group_id, permission_type)
+        # permission_type should be an integer
+        # 1 = Full
+        # 2 = Create Post
+        # 3 = Read Only
+        put("/c/#{category_id}.json", { category_id: category_id, permissions: [group_id][permission_type] })
+      end
     end
   end
 end
