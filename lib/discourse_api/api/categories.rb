@@ -36,12 +36,12 @@ module DiscourseApi
         response.body['category']
       end
 
-      def set_permission(category_id, group_id, permission_type)
+      def set_permission(category_name, group_id, permission_type)
         # permission_type should be an integer
         # 1 = Full
         # 2 = Create Post
         # 3 = Read Only
-        put("/categories/#{category_id}", { category_id: category_id, :permissions => {group_id => permission_type} })
+        put("/categories/#{category_id}", { name: category_name, :permissions => {group_id => permission_type} })
       end
     end
   end
