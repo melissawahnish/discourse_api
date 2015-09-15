@@ -41,7 +41,7 @@ module DiscourseApi
         # 1 = Full
         # 2 = Create Post
         # 3 = Read Only
-        put("/categories/#{category_id}", { name: category_name, :permissions => {group_id => permission_type} })
+        put("/categories/#{category_name}", { name: category_name, :permissions => {group_id => permission_type} })
       end
     end
   end
