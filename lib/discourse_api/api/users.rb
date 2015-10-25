@@ -5,6 +5,10 @@ module DiscourseApi
         put "/admin/users/#{id}/activate", api_key: api_key, api_username: api_username
       end
 
+      def deactivate(id)
+        put "/admin/users/#{id}/deactivate", api_key: api_key, api_username: api_username
+      end
+
       def user(username, params={})
         response = get("/users/#{username}.json", params)
         response[:body]['user']
